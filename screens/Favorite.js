@@ -1,14 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View ,FlatList} from 'react-native';
-import  ImageSlider from 'react-native-image-slider';
-import FoodItems from '../componenets/FoodItems'
-export default function Home() {
-    let Images = [
-        require('../assets/steak.jpg'),
-        require('../assets/rice.jpg'),
-        require('../assets/pizza.jpg')
-    ]
+import FavoriteItems  from "../componenets/FavoriteItems"
+export default function Favorite() {
+   
     const foods = [
         {id: "1", image: require('../assets/steak.jpg'), name: "Steak", price: "20$", detail:  "A steak is a meat generally sliced across the muscle fibers, potentially including a bone. It is normally grilled, though can also be pan-fried. It is often grilled in an attempt to replicate the flavor of steak cooked over the glowing coals of an open fire." },
     
@@ -22,22 +17,12 @@ export default function Home() {
       ];
   return (
     <View style={styles.container}>
-        <View style={styles.containerImageSlider}>
-          <ImageSlider
-              images={Images}
-              style={styles.imageSlider}
-              autoPlayWithInterval={7000}
-               />
-        </View>
-        <Text style={styles.categoriText}>catagories</Text>
-        <FlatList 
-            numColumns={3}
-            data={foods}
-            renderItem={({item}) =>{
-                return <FoodItems  name={item.name} price={item.price} image={item.image}  detail={item.detail}/>
-        
-            }}
-        />
+       <FlatList
+        data={foods}
+        renderItem={({item})=>{
+            return <FavoriteItems name={item.name} image={item.image} price={item.price}/>
+        }}
+       />
     </View>
   );
 }
@@ -47,18 +32,6 @@ const styles = StyleSheet.create({
       flex:1,
      
     },
-    containerImageSlider:{
-        height:170,
-        margin:8,
-        
-    },
-    imageSlider:{
-      borderRadius:10
-    },
-  categoriText:{
-      fontSize:16,
-      margin:10,
-      fontWeight:"bold"
-  }
+  
 
 });
