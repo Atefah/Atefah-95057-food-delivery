@@ -32,6 +32,7 @@ export default function Home() {
             data={foods}
             renderItem={({item}) =>{
                 return <FoodItems  name={item.name} price={item.price} image={item.Images} />
+        
             }}
         />
     </View>
@@ -40,11 +41,13 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     container:{
-      flex:1
+      flex:1,
+     
     },
     containerImageSlider:{
         height:170,
-        margin:8
+        margin:8,
+        
     },
     imageSlider:{
       borderRadius:10
